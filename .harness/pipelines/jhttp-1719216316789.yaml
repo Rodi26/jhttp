@@ -27,7 +27,8 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: maven:3.8-jdk-11
                     shell: Sh
-                    command: mvn clean package dependency:copy-dependencies
+                    command: |
+                      mvn clean package dependency:copy-dependencies
               - step:
                   type: Run
                   name: run test
@@ -40,17 +41,6 @@ pipeline:
                       spec:
                         paths:
                           - target/surefire-reports/*.xml
-              - step:
-                  identifier: dockerbuild
-                  name: docker_build
-                  spec:
-                    caching: true
-                    connectorRef: <+input>
-                    repo: hello/world
-                    tags:
-                      - latest
-                  timeout: ""
-                  type: BuildAndPushDockerRegistry
           platform:
             os: MacOS
             arch: Arm64
