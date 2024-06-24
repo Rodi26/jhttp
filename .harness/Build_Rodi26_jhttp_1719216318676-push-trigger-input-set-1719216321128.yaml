@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Rodi26_jhttp_1719216318676-push-trigger-input-set
+  identifier: Build_Rodi26_jhttp_1719216318676pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Rodi26_jhttp_1719216318676
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
